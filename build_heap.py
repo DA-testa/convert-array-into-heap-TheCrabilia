@@ -39,12 +39,12 @@ def main():
     mode = input("Enter mode (I - manual, F - read from file): ")
     match mode:
         case "I":
-            n = int(input("Enter number of elements: ").strip())
+            n = int(input("Enter number of elements: ").strip("\\r\\n"))
             data = list(map(int, input("Enter elements: ").split()))
             assert len(data) == n
             swaps = build_heap(data)
         case "F":
-            file_name = input("Enter test file name: ").strip()
+            file_name = input("Enter test file name: ").strip("\\r\\n")
             if file_name.endswith(".a"):
                 print("File name should not end with '.a'")
                 sys.exit(1)
