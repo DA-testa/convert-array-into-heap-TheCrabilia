@@ -36,26 +36,31 @@ def build_heap(data: list[int]) -> int:
 
 
 def main():
-    mode = input("Enter mode (I - manual, F - read from file): ")
-    match mode:
-        case "I":
-            n = int(input("Enter number of elements: "))
-            data = list(map(int, input("Enter elements: ").split()))
-            assert len(data) == n
-            swaps = build_heap(data)
-        case "F":
-            file_name = input("Enter test file name: ")
-            if file_name.endswith(".a"):
-                print("File name should not end with '.a'")
-                sys.exit(1)
-            with open(f"tests/{file_name}", "r") as f:
-                n = int(f.readline())
-                data = list(map(int, f.readline().split()))
-                assert len(data) == n
-                swaps = build_heap(data)
-        case _:
-            print("Invalid mode")
-            sys.exit(1)
+    # mode = input("Enter mode (I - manual, F - read from file): ")
+    # match mode:
+    #     case "I":
+    #         n = int(input("Enter number of elements: "))
+    #         data = list(map(int, input("Enter elements: ").split()))
+    #         assert len(data) == n
+    #         swaps = build_heap(data)
+    #     case "F":
+    #         file_name = input("Enter test file name: ")
+    #         if file_name.endswith(".a"):
+    #             print("File name should not end with '.a'")
+    #             sys.exit(1)
+    #         with open(f"tests/{file_name}", "r") as f:
+    #             n = int(f.readline())
+    #             data = list(map(int, f.readline().split()))
+    #             assert len(data) == n
+    #             swaps = build_heap(data)
+    #     case _:
+    #         print("Invalid mode")
+    #         sys.exit(1)
+
+    n = int(input())
+    data = list(map(int, input().split()))
+    assert len(data) == n
+    swaps = build_heap(data)
 
     print(len(swaps))
     for i, j in swaps:
