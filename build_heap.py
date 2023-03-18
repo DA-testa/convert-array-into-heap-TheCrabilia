@@ -1,4 +1,4 @@
-import os
+import sys
 
 
 def heapify_down(arr: list[int], i: int, swaps: tuple[int, int]) -> int:
@@ -47,7 +47,7 @@ def main():
             file_name = input("Enter test file name: ")
             if file_name.endswith(".a"):
                 print("File name should not end with '.a'")
-                os.exit(1)
+                sys.exit(1)
             with open(f"tests/{file_name}", "r") as f:
                 n = int(f.readline())
                 data = list(map(int, f.readline().split()))
@@ -55,7 +55,7 @@ def main():
                 swaps = build_heap(data)
         case _:
             print("Invalid mode")
-            os.exit(1)
+            sys.exit(1)
 
     print(len(swaps))
     for i, j in swaps:
