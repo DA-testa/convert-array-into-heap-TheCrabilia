@@ -36,7 +36,11 @@ def build_heap(data: list[int]) -> int:
 
 
 def main():
-    mode = input("Enter mode (I - manual, F - read from file): ")
+    mode = (
+        input("Enter mode (I - manual, F - read from file): ")
+        .strip("\\r\\n")
+        .upper()
+    )
     match mode:
         case "I":
             n = int(input("Enter number of elements: ").strip("\\r\\n"))
