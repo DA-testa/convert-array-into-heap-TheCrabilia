@@ -36,30 +36,17 @@ def build_heap(data: list[int]) -> int:
 
 
 def main():
-    mode = (
-        input("Enter mode (I - manual, F - read from file): ")
-        .strip("\\r\\n")
-        .upper()
-    )
-    match mode:
-        case "I":
-            n = int(input("Enter number of elements: ").strip("\\r\\n"))
-            data = list(map(int, input("Enter elements: ").split()))
-            assert len(data) == n
-            swaps = build_heap(data)
-        case "F":
-            file_name = input("Enter test file name: ").strip("\\r\\n")
-            if file_name.endswith(".a"):
-                print("File name should not end with '.a'")
-                sys.exit(1)
-            with open(f"tests/{file_name}", "r") as f:
-                n = int(f.readline())
-                data = list(map(int, f.readline().split()))
-                assert len(data) == n
-                swaps = build_heap(data)
-        case _:
-            print("Invalid mode")
-            sys.exit(1)
+    source = input().strip()
+    if source[0:1] == "I":
+        n = int(input())
+        data = list(map(int, input().split()))
+    elif source[0:1] == "F":
+        with open(f"tests/{input()}") as f:
+            n = int(f.readline())
+            data = list(map(int, f.readline().split()))
+
+    assert len(data) == n
+    swaps = build_heap(data)
 
     print(len(swaps))
     for i, j in swaps:
